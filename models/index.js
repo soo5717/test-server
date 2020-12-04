@@ -36,24 +36,44 @@ db.Travel.belongsTo(db.User, {
 db.Travel.hasMany(db.Plan, {
   onDelete: 'cascade'
 });
-db.Plan.belongsTo(db.Travel);
+db.Plan.belongsTo(db.Travel, {
+  foreignKey: {
+    name: 'travel_id',
+    allowNull: false
+  }
+});
 
 // 1: M 관계 Plan-Budget
 db.Plan.hasMany(db.Budget, {
   onDelete: 'cascade'
 });
-db.Budget.belongsTo(db.Plan);
+db.Budget.belongsTo(db.Plan, {
+  foreignKey: {
+    name: 'plan_id',
+    allowNull: false
+  }
+});
 
 // 1: M 관계 Plan-Expense
 db.Plan.hasMany(db.Expense, {
   onDelete: 'cascade'
 });
-db.Expense.belongsTo(db.Plan);
+db.Expense.belongsTo(db.Plan, {
+  foreignKey: {
+    name: 'plan_id',
+    allowNull: false
+  }
+});
 
 // 1: M 관계 User-Like
 db.User.hasMany(db.Like, {
   onDelete: 'cascade'
 });
-db.Like.belongsTo(db.User);
+db.Like.belongsTo(db.User, {
+  foreignKey: {
+    name: 'user_id',
+    allowNull: false
+  }
+});
 
 module.exports = db;
