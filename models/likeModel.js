@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         }
     }, {
-        tableName: 'like',
+        tableName: 'likes',
         underscored: true,
         timestamps: false
     });
