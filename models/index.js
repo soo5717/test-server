@@ -23,7 +23,10 @@ db.Like = require('./likeModel')(sequelize, Sequelize);
 
 // 1: M 관계 User-Travel
 db.User.hasMany(db.Travel, {
-  onDelete: 'cascade'
+  onDelete: 'cascade',
+  foreignKey: {
+    allowNull: false
+  }
 });
 db.Travel.belongsTo(db.User);
 
