@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(50),
             allowNull: false
         },
-        contry: {
+        country: {
             type: DataTypes.STRING(20),
             allowNull: false
         }
