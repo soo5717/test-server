@@ -23,31 +23,31 @@ db.Like = require('./likeModel')(sequelize, Sequelize);
 
 // 1: M 관계 User-Travel
 db.User.hasMany(db.Travel, {
-  onDelete: 'casecade'
+  onDelete: 'cascade'
 });
 db.Travel.belongsTo(db.User);
 
 // 1: M 관계 Travel-Plan
 db.Travel.hasMany(db.Plan, {
-  onDelete: 'casecade'
+  onDelete: 'cascade'
 });
 db.Plan.belongsTo(db.Travel);
 
 // 1: M 관계 Plan-Budget
 db.Plan.hasMany(db.Budget, {
-  onDelete: 'casecade'
+  onDelete: 'cascade'
 });
 db.Budget.belongsTo(db.Plan);
 
 // 1: M 관계 Plan-Expense
 db.Plan.hasMany(db.Expense, {
-  onDelete: 'casecade'
+  onDelete: 'cascade'
 });
 db.Expense.belongsTo(db.Plan);
 
 // 1: M 관계 User-Like
 db.User.hasMany(db.Like, {
-  onDelete: 'casecade'
+  onDelete: 'cascade'
 });
 db.Like.belongsTo(db.User);
 
