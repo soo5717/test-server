@@ -1,4 +1,4 @@
-const userController = {
+module.exports = {
     signUp : function(req, res) {
         let status = 400;
         res.json({
@@ -6,5 +6,3 @@ const userController = {
         });
     }
 };
-
-module.exports = userController;
