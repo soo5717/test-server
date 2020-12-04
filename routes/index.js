@@ -6,7 +6,7 @@ router.get('/', function(req, res) {
     res.render('index', { title: 'Express' });
 });
 
-/* Add Router. */
+// Router 추가
 router.use('/users', require('./users'));
 
 module.exports = router;

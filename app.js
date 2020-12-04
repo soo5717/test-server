@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { sequelize } = require('./models');
 
+// Sequelize 연결
 sequelize.sync({ alter: true })
 .then(() => {
   console.log('DataBase connection success!');
