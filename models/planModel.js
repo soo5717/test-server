@@ -1,10 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Plan', {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
         date: {
             type: DataTypes.DATEONLY,
             allowNull: false

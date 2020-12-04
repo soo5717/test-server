@@ -1,10 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
     return sequelize.define('Budget', {
-        id: {
-            type: DataTypes.INTEGER,
-            primaryKey: true,
-            autoIncrement: true
-        },
         currency: {
             type: DataTypes.STRING(10),
             allowNull: false
