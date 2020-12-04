@@ -3,6 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { sequelize } = require('./models');
+
+sequelize.sync({ alter: true })
+.then(() => {
+  console.log('DataBase connection success!');
+})
+.catch((err) => {
+  console.error(err);
+})
 
 var indexRouter = require('./routes/index');
 

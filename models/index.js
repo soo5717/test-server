@@ -1,9 +1,4 @@
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
 const Sequelize = require('sequelize');
-const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
@@ -15,23 +10,45 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-fs
-  .readdirSync(__dirname)
-  .filter(file => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
-  })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+// 생성한 모델
+db.User = require('./userModel')(sequelize, Sequelize);
+db.Travel = require('./travelModel')(sequelize, Sequelize);
+db.Plan = require('./planModel')(sequelize, Sequelize);
+db.Budget = require('./budgetModel')(sequelize, Sequelize);
+db.Expense = require('./expenseModel')(sequelize, Sequelize);
+db.Like = require('./likeModel')(sequelize, Sequelize);
+
+// 1: M 관계 User-Travel
+db.User.hasMany(db.Travel, {
+  onDelete: 'casecade'
+});
+db.Travel.belongsTo(db.User);
+
+// 1: M 관계 Travel-Plan
+db.Travel.hasMany(db.Plan, {
+  onDelete: 'casecade'
+});
+db.Plan.belongsTo(db.Travel);
+
+// 1: M 관계 Plan-Budget
+db.Plan.hasMany(db.Budget, {
+  onDelete: 'casecade'
+});
+db.Budget.belongsTo(db.Plan);
+
+// 1: M 관계 Plan-Expense
+db.Plan.hasMany(db.Expense, {
+  onDelete: 'casecade'
+});
+db.Expense.belongsTo(db.Plan);
+
+// 1: M 관계 User-Like
+db.User.hasMany(db.Like, {
+  onDelete: 'casecade'
+});
+db.Like.belongsTo(db.User);
 
 module.exports = db;
