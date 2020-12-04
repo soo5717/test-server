@@ -27,6 +27,7 @@ db.User.hasMany(db.Travel, {
 });
 db.Travel.belongsTo(db.User, {
   foreignKey: {
+    name: 'user_id',
     allowNull: false
   }
 });
