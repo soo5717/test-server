@@ -7,5 +7,5 @@ module.exports = {
     FORBIDDEN: 403, //이 리소스 요청은 금지야!
     NOT_FOUND: 404, //리소스가 존재하지 않아
     INTERNAL_SERVER_ERROR: 500, //서버 내부 오류
-    SERVICE_UNAVAILABLE: 503
+    SERVICE_UNAVAILABLE: 503 //사용 안할 듯
 };
