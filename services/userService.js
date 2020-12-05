@@ -31,7 +31,8 @@ module.exports = {
             const result = await User.findOne({
                 where: {
                     id: id
-                }
+                },
+                attributes: ['email', 'name', 'country']
             });
             return result;
         } catch(e) {
