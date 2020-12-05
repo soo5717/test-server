@@ -32,12 +32,21 @@ module.exports = {
                 return res.status(sc.BAD_REQUEST).send(rb.fail(sc.BAD_REQUEST, rm.MISMATCH_PWD));
             }
             
-            const { accessToken } = await jwt.create(user);
+            const { accessToken } = await jwt.sign(user);
             console.log(accessToken);
             return res.status(sc.OK).send(rb.successData(sc.OK, rm.SIGNIN_SUCCESS, { accessToken: accessToken }));
         } catch(e) {
             console.error(e);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(rb.fail(sc.INTERNAL_SERVER_ERROR, rm.SIGNIN_FAIL));
         }
-    }    
+    },
+    readProfile: async (req, res) => {
+        try {
+            const result = await userService.readProfile(req.decoded);
+            return res.status(sc.OK).send(rb.successData(sc.OK, rm.PROFILE_READ_SUCCESS, result));
+        } catch(e) {
+            console.error(e);
+            return res.status(sc.INTERNAL_SERVER_ERROR).send(rb.fail(sc.INTERNAL_SERVER_ERROR, rm.PROFILE_READ_FAIL));
+        }
+    }   
 };

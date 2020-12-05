@@ -25,5 +25,17 @@ module.exports = {
         } catch(e) {
             throw e;
         }
+    },
+    readProfile: async (id) => {
+        try {
+            const result = await User.findOne({
+                where: {
+                    id: id
+                }
+            });
+            return result;
+        } catch(e) {
+            throw e;
+        }
     }
 };
