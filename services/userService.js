@@ -4,7 +4,7 @@ module.exports = {
     read: async () => {
         try{
             const users = await User.findAll({
-                attributes: ['id', 'email', 'name']
+                attributes: ['id', 'email', 'nam']
             });
             return users;
         } catch(e) {
