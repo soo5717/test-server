@@ -8,7 +8,7 @@ module.exports = {
             const users = await userService.read();
             return res.status(sc.OK).send(rb.success(sc.OK, '사용자 조회 성공', users));
         } catch(e) {
-            console.error(e.message);
+            console.error(e);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(rb.fail(sc.INTERNAL_SERVER_ERROR, '사용자 조회 실패'));
         }
     }
