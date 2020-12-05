@@ -33,7 +33,6 @@ module.exports = {
             }
             
             const { accessToken } = await jwt.sign(user);
-            console.log(accessToken);
             return res.status(sc.OK).send(rb.successData(sc.OK, rm.SIGNIN_SUCCESS, { accessToken: accessToken }));
         } catch(e) {
             console.error(e);
