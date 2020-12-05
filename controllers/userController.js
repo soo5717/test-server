@@ -32,9 +32,9 @@ module.exports = {
                 return res.status(sc.BAD_REQUEST).send(rb.fail(sc.BAD_REQUEST, rm.MISMATCH_PWD));
             }
             
-            const token = jwt.create(user);
+            const { accessToken } = await jwt.create(user);
             console.log(token);
-            return res.status(sc.OK).send(rb.successData(sc.OK, rm.SIGNIN_SUCCESS, token));
+            return res.status(sc.OK).send(rb.successData(sc.OK, rm.SIGNIN_SUCCESS, accessToken));
         } catch(e) {
             console.error(e);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(rb.fail(sc.INTERNAL_SERVER_ERROR, rm.SIGNIN_FAIL));
