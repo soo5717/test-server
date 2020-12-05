@@ -13,11 +13,11 @@ module.exports = {
         }
 
         const decoded = await jwt.verify(token);
-        if(decoded === TOKEN_EXPIRED){
+        if(decoded === TOKEN_EXPIRED){ //토큰 만료
             return res.status(sc.UNAUTHORIZED).send(rb.fail(sc.UNAUTHORIZED, rm.EXPIRED_TOKEN));
-        } else if(decoded === TOKEN_INVALID) {
+        } else if(decoded === TOKEN_INVALID) { //유효하지 않은 토큰
             return res.status(sc.UNAUTHORIZED).send(rb.fail(sc.UNAUTHORIZED, rm.INVALID_TOKEN));
-        } else if(!decoded.id) {
+        } else if(!decoded.id) { //유효하지 않은 토큰
             return res.status(sc.UNAUTHORIZED).send(rb.fail(sc.UNAUTHORIZED, rm.INVALID_TOKEN));
         }
         req.decoded = decoded.id;
