@@ -7,5 +7,8 @@ module.exports = {
     SIGNUP_FAIL: '회원가입 실패',
 
     //로그인
-    SIGNIN_SUCCESS: '로그인 성공'
+    SIGNIN_SUCCESS: '로그인 성공',
+    NO_ACCOUNT: '존재하지 않는 계정입니다.',
+    MISMATCH_PWD: '비밀번호가 일치하지 않습니다.',
+    SIGNIN_FAIL: '로그인 실패'
 };
