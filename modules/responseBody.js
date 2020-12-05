@@ -1,5 +1,5 @@
 module.exports = {
-    success: (status, message, data) => {
+    successData: (status, message, data) => {
         return {
             status: status,
             success: true,
@@ -7,7 +7,7 @@ module.exports = {
             data: data
         }
     },
-    successWithoutData: (status, message) => {
+    success: (status, message) => {
         return {
             status: status,
             success: true,

@@ -1,12 +1,16 @@
 const { User } = require('../models')
 
 module.exports = { 
-    read: async () => {
+    create: async (email, pwd, name, country) => {
         try{
-            const users = await User.findAll({
-                attributes: ['id', 'email', 'name']
+            const user = await User.create({
+                email: email,
+                pwd: pwd,
+                name: name,
+                country: country
             });
-            return users;
+            console.log(user);
+            return user;
         } catch(e) {
             throw e;
         }
