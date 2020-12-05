@@ -34,7 +34,7 @@ module.exports = {
             
             const { accessToken } = await jwt.create(user);
             console.log(accessToken);
-            return res.status(sc.OK).send(rb.successData(sc.OK, rm.SIGNIN_SUCCESS, accessToken));
+            return res.status(sc.OK).send(rb.successData(sc.OK, rm.SIGNIN_SUCCESS, { accessToken: accessToken }));
         } catch(e) {
             console.error(e);
             return res.status(sc.INTERNAL_SERVER_ERROR).send(rb.fail(sc.INTERNAL_SERVER_ERROR, rm.SIGNIN_FAIL));
